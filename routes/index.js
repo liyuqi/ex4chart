@@ -17,6 +17,10 @@ router.pieChart = function(req, res){
 
 };
 
+router.donutChart = function(req, res){
+  res.render('donutChart', {  title: 'donutChart'});
+
+};
 
 module.exports = router;
 
