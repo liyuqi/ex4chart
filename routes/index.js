@@ -32,5 +32,10 @@ router.scatterBubbleChart = function(req, res){
 
 };
 
+router.groupStackedBarChart = function(req, res){
+  res.render('groupStackedBarChart', {  title: 'Group / Stacked Bar Chart'});
+
+};
+
 module.exports = router;
 
