@@ -32,7 +32,8 @@ app.use('/users', users);
 app.use('/barChart', routes.barChart);
 app.use('/pieChart', routes.pieChart);
 app.use('/donutChart', routes.donutChart);
-
+app.use('/linePlusBarChart', routes.linePlusBarChart);
+app.use('/scatterBubbleChart', routes.scatterBubbleChart);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -22,5 +22,15 @@ router.donutChart = function(req, res){
 
 };
 
+router.linePlusBarChart = function(req, res){
+  res.render('linePlusBarChart', {  title: 'line Plus Bar Chart'});
+
+};
+
+router.scatterBubbleChart = function(req, res){
+  res.render('scatterBubbleChart', {  title: 'Scatter / Bubble Chart'});
+
+};
+
 module.exports = router;
 
