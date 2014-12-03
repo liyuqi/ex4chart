@@ -12,3 +12,6 @@ http://bootswatch.com/yeti/
 
 nvd3.js use 1.1.15 beta:
 http://nvd3.org/index.html
+
+mongoose@3.8.20
+不使用 mongoskin : 版本太久沒更新
