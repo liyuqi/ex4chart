@@ -6,23 +6,21 @@
 </head>
 <body>
 <!--<span class="glyphicon glyphicon-user"></span>-->
-<h1>mongoose Prac1</h1>
+<h1>訂單小計</h1>
 
 <table class="table table-striped table-hover " width="80%">
     <thead>
     <tr>
         <th>timestamp</th>
         <th>level</th>
-        <th>message</th>
     </tr>
     </thead>
     <tbody>
-<% dataset.forEach( function ( event ){ %>
+<% result.forEach( function ( event ){ %>
 
 <tr>
-    <td ><%= event.timestamp %></td>
-    <td ><%= event.level %></td>
-    <td ><%= event.message %></td>
+    <td ><%= event.Subtotal %></td>
+    <td ><%= event.OrderID %></td>
 </tr>
 <% }); %>
     </tbody>

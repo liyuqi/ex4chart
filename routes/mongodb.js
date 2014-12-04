@@ -1,5 +1,6 @@
 //mongodbDemo
 // var mongodb = require('../models/db.js');
+require( '../db' );
 var mongoose = require('mongoose');
 var events = mongoose.model('events');
 var util = require('util');
