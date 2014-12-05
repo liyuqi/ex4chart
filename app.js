@@ -10,7 +10,12 @@ var users = require('./routes/users');
 
 
 var mongodb = require('./routes/mongodb');
-var northwind = require('./routes/northwind');
+var northwindagg = require('./routes/northwindagg');
+//var monServer = require('mongodb').Server;
+//var Db = require('mongodb').Db;
+//var nwdb = new Db('Northwind', new monServer('localhost', 27017),{safe:false});
+var monk = require('monk');
+var nwdb = monk('127.0.0.1:27017/Northwind');
 
 //add
 var partials = require('express-partials');
@@ -39,8 +44,8 @@ app.use('/donutChart', routes.donutChart);
 app.use('/linePlusBarChart', routes.linePlusBarChart);
 app.use('/scatterBubbleChart', routes.scatterBubbleChart);
 app.use('/groupStackedBarChart', routes.groupStackedBarChart);
-app.use('/mongoosePrac1', mongodb.mongoosePrac1());
-app.use('/nw01', northwind.nw01());
+//app.use('/mongoosePrac1', mongodb.mongoosePrac1());
+app.use('/nw01', northwindagg.nw01(nwdb));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
