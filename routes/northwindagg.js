@@ -30,7 +30,7 @@ exports.nw01 = function(nwdb){
             if(err){
                 console.log("err : "+err.message);
             }
-            console.log("result : "+util.inspect(result));
+            //console.log("result : "+util.inspect(result));
             res.render('nw01', {title: '訂單小計', result: result });
         });
     };

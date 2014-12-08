@@ -2,28 +2,94 @@
 <html>
 <head>
     <title><%= title %></title>
-
+    <link href="/stylesheets/c3.css" rel="stylesheet" type="text/css">
+    <script src="/javascripts/d3.min.js" charset="utf-8"></script>
+    <script src="/javascripts/c3.min.js"></script>
 </head>
 <body>
 <!--<span class="glyphicon glyphicon-user"></span>-->
-<h1>訂單小計</h1>
 
+<div id="chart"></div>
+
+
+<h1>訂單小計：</h1>
+<h3>共<%=result.length%>筆</h3>
 <table class="table table-striped table-hover " width="80%">
     <thead>
     <tr>
-        <th>timestamp</th>
-        <th>level</th>
+        <th>OrderId</th>
+        <th>Subtotal</th>
+
     </tr>
     </thead>
     <tbody>
-<% result.forEach( function ( event ){ %>
+    <% var a = [], x=[],y=[],i=0;
+      result.forEach( function ( event ){ %>
 
-<tr>
-    <td ><%= event.Subtotal %></td>
-    <td ><%= event.OrderID %></td>
-</tr>
-<% }); %>
+    <tr>
+        <td ><%= event.OrderID %></td>
+        <td ><%= event.Subtotal %></td>
+        <%
+                x[i] = event.OrderID;
+                y[i] = event.Subtotal;
+        %>
+        <%
+//            a[i]= [event.OrderID.toString(),event.Subtotal];
+        %>
+    </tr>
+    <% i++;
+        });
+    %>
     </tbody>
-    </table>
+</table>
+<!--chart 不放 c3_example.js的原因: 要動態展示-->
+<script type="text/javascript">
+
+    var xdata = [];
+    var ydata = [];
+    var i=1;
+    xdata[0]='x';
+    ydata[0]='total';
+    <%
+        result.forEach( function ( d ){
+    %>
+        xdata[i]= '<%= d.OrderID %>';
+        ydata[i]= '<%= d.Subtotal %>';
+        console.log("x:"+xdata[i]+"-- y:"+ydata[i]);
+        i++;
+    <%
+         });
+    %>
+    var chart = c3.generate({
+        data: {
+//            columns: [myVar],
+            x:'x',
+            columns:[
+                xdata,
+                ydata
+                ],
+            type: 'bar'
+        },
+        bar: {
+//            width: {
+//                ratio: 0.5 // this makes bar width 50% of length between ticks
+//            }
+            // or
+            width: 1 // this makes bar width 100px
+        },
+        axis: {
+            x: {
+                type: 'category',
+                tick: {
+                    rotate: 60,
+                    fit: true,
+                    multiline: false
+                },
+                height: 100
+            }
+        }
+    });
+
+</script>
 </body>
 </html>
