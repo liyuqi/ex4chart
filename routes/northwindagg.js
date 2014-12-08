@@ -25,7 +25,8 @@ exports.nw01 = function(nwdb){
                 OrderID:"$_id",
                 Subtotal:"$Subtotal"
             }}
-            ,{$sort:{OrderID:1}}
+            ,{$sort:{OrderID:1}},
+            {$limit:120} //全部830 , 限制80條,  不然圖看不清楚
         ], function(err, result) {
             if(err){
                 console.log("err : "+err.message);
