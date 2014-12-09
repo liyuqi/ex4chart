@@ -61,6 +61,9 @@
          });
     %>
     var chart = c3.generate({
+        size: {
+            width: 2000
+        },
         data: {
 //            columns: [myVar],
             x:'x',
@@ -68,7 +71,8 @@
                 xdata,
                 ydata
                 ],
-            type: 'bar'
+            type: 'bar',
+            onclick: function (xdata) {  location.href = "/"; }
         },
         bar: {
 //            width: {
