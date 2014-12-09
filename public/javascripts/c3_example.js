@@ -18,6 +18,9 @@ c3.generate({
 
 c3.generate({
     bindto: '#barchart',
+    size: {
+        width: 640
+    },
     data: {
         columns: [
             ['data1', 30, 200, 100, 400, 150, 250],

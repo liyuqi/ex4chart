@@ -27,7 +27,7 @@
       result.forEach( function ( event ){ %>
 
     <tr>
-        <td ><%= event.OrderID %></td>
+        <td ><a href="/nw01detail?oid=<%= event.OrderID %>"><%= event.OrderID %></a></td>
         <td ><%= event.Subtotal %></td>
         <%
                 x[i] = event.OrderID;
@@ -55,14 +55,14 @@
     %>
         xdata[i]= '<%= d.OrderID %>';
         ydata[i]= '<%= d.Subtotal %>';
-        console.log("x:"+xdata[i]+"-- y:"+ydata[i]);
+//        console.log("x:"+xdata[i]+"-- y:"+ydata[i]);
         i++;
     <%
          });
     %>
     var chart = c3.generate({
         size: {
-            width: 2000
+            width: 4000
         },
         data: {
 //            columns: [myVar],
@@ -72,7 +72,12 @@
                 ydata
                 ],
             type: 'bar',
-            onclick: function (xdata) {  location.href = "/nw01"; }
+//            onclick: function (xdata) {  location.href = "/nw01"; }
+            onclick: function (d, i) {
+                console.log(d,i);
+//                console.log("id :"+xdata[d.x+1]);  // +1是因為xdata不是0 base
+                location.href = "/nw01detail?oid="+xdata[d.x+1];
+            }
         },
         bar: {
 //            width: {
@@ -80,6 +85,7 @@
 //            }
             // or
             width: 1 // this makes bar width 100px
+            ,onclick: function (xdata,element) {  alert("clicked:"+xdata);}
         },
         axis: {
             x: {

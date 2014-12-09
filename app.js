@@ -46,6 +46,7 @@ app.use('/scatterBubbleChart', routes.scatterBubbleChart);
 app.use('/groupStackedBarChart', routes.groupStackedBarChart);
 //app.use('/mongoosePrac1', mongodb.mongoosePrac1());
 app.use('/nw01', northwindagg.nw01(nwdb));
+app.use('/nw01detail', northwindagg.nw01detail(nwdb));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -1,7 +1,10 @@
 ex4chart
 ========
 
-node.js + express 4 + C3.js
+node.js + express 4 + C3.js / nvd3.js
+
+使用前先安裝 northwind 的 mongodo，詳見：
+https://github.com/liyuqi/northwind-mongodb
 
 C3.js use 0.4.4:
 http://c3js.org/gettingstarted.html
